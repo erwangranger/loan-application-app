@@ -1,11 +1,17 @@
-FROM python:3.9
+FROM python:latest
 
-WORKDIR /code
 
-COPY ./requirements.txt /code/requirements.txt
+COPY requirements.txt /app/requirements.txt
+COPY app.py /app/app.py
 
-RUN pip install --no-cache-dir --upgrade -r /code/requirements.txt
+WORKDIR /app
 
-COPY ./* /code/
+RUN pip install -r requirements.txt
 
-CMD ["uvicorn", "app:app", "--host", "0.0.0.0", "--port", "8080"]
+
+# Expose the default httpd port 80
+EXPOSE 5000
+
+ENTRYPOINT [ "python" ]
+
+CMD [ "app.py" ]

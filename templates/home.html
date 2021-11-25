@@ -2,27 +2,13 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Home</title>
 </head>
 <body>
-    <form action="{{url_for('predict')}}" method="post">
-    <input type="text" placeholder="Persons Name" name="a">
-    <input type="text" placeholder="Loan Amount" name="b">
-    <input type="text" placeholder="Credit History" name="c">
-    {% comment %} <input type="text" placeholder="Weight in Kg" name="d">
-    <input type="text" placeholder="Upper blood pressure" name="e">
-    <input type="text" placeholder="Lower blood pressure" name="f">
-    <input type="text" placeholder="Cholesterol level" name="g">
-    <input type="text" placeholder="Glucose level" name="h">
-    <input type="text" placeholder="Smoking status" name="i">
-    <input type="text" placeholder="Alcohol status" name="j"> {% endcomment %}
-
-    <button type="submit">Predict</button>
-
-    <b>{{statement}}</b>
-    </form>
-
+    <h1><a href = "/newloan">Start new loan application</a></h1>
+    <br>
+    <h1><a href = "/listloans">List past loan applications</a></h1>
 </body>
 </html>

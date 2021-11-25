@@ -1,0 +1,27 @@
+<!doctype html>
+<html>
+   <body>
+      <font size="5" face="Courier New" >
+
+      <table border = 1>
+         <thead>
+            <td>Name</td>
+            <td>Username</td>
+            <td>Password</td>
+            <td>ip</td>
+         </thead>
+
+         {% for row in rows %}
+            <tr>
+               <td>{{row["name"]}}</td>
+               <td>{{row["assigned_user"]}}</td>
+               <td>{{row["password"]}}</td>
+               <td>{{row['ip']}}</td>
+            </tr>
+         {% endfor %}
+      </table>
+      </font>
+      <a href = "/">Go back to home page</a>
+
+   </body>
+</html>

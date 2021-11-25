@@ -1,6 +1,2 @@
-fastapi==0.70.0
-uvicorn==0.15.0
-#Flask==2.0.1
-jinja2
-#yfinance
-#sqlalchemy
+Flask==2.0.1
+

@@ -1,0 +1,51 @@
+<html>
+    <style>
+        table, th, td {
+            border: 1px solid black;
+            border-collapse: collapse;
+            }
+    </style>
+<head>
+    <title>RHODS Workshop</title>
+</head>
+<body>
+    <h1>Getting access to your RHODS sandbox environment</h1>
+        <p> Please enter your name below:</p>
+        <form method="POST" action="/response">
+            First Name: <input type="text" name="fname" required>
+            <br>
+            <br>
+            Last Name: <input type="text" name="lname" required>
+            <br>
+            <br>
+            <input type="submit" value="Reveal Environment Details">
+        </form>
+        <h1> Env Details </h1>
+        {% if FullName %}
+            <table >
+                <tr>
+                  <th>Name</th>
+                  <th>{{FullName}}</th>
+                </tr>
+                <tr>
+                  <td>Assigned User ID   </td>
+                  <td>student_{{counter_3}}</td>
+                </tr>
+                <tr>
+                  <td>Assigned Password   </td>
+                  <td>password</td>
+                </tr>
+                <tr>
+                  <td>URL</td>
+                  <td>  </td>
+                </tr>
+                <tr>
+                    <td>Attendee IP</td>
+                    <td> {{ip_address1}} </td>
+                </tr>
+            </table>
+            <a href=".."> back </a>
+        {% endif %}
+      </body>
+</body>
+</html>

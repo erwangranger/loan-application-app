@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+
+<html>
+   <style>
+      table, th, td {
+          border: 1px solid black;
+          border-collapse: collapse;
+          }
+      th{
+      font-weight: normal;
+      text-align: left;
+
+      }
+      td {
+      vertical-align: baseline;
+      }
+  </style>
+
+   <body>
+
+      <p>... Your connection information has been successfully generated. See below:</p>
+      <!-- <h2><a href = "\">go back to home page</a></h2> -->
+
+      <h1> Environment Details </h1>
+      {% if assigned_user %}
+          <font size="5" face="Courier New" >
+          <table >
+              <tr>
+                <th>Name:</th>
+                <th>{{nm}}</th>
+              </tr>
+              <tr>
+                <td>Assigned Username:   </td>
+                <td>{{assigned_user}}</td>
+              </tr>
+              <tr>
+                <td>Assigned Password:   </td>
+                <td>rhodsdemo</td>
+              </tr>
+              <tr>
+               <td>Workshop Instructions: </td>
+               <td> <a href="https://bit.ly/licence-plate" target="_blank" rel="noopener noreferrer"> bit.ly/licence-plate </a>  </td>
+             </tr>
+              <tr>
+                <td>OpenShift Console URL: </td>
+                <td> <a href="https://red.ht/rhods-workshop" target="_blank" rel="noopener noreferrer"> red.ht/rhods-workshop </a>  </td>
+              </tr>
+              <tr>
+                <td>RHODS Dashboard URL: </td>
+                <td> <a href="https://red.ht/rhods-workshop-dashboard" target="_blank" rel="noopener noreferrer"> red.ht/rhods-workshop-dashboard </a>  </td>
+              </tr>
+          </table>
+         </font>
+         </br>
+          <p>Save this information somewhere and do not reload this page.</p>
+      {% endif %}
+   </body>
+</html>
