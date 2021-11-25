@@ -1,5 +1,6 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, jsonify
 import sqlite3 as sql
+import json
 
 counter = 0
 
@@ -25,6 +26,11 @@ app = Flask(__name__)
 @app.route('/')
 def home():
    return render_template('home.html')
+
+@app.route('/status')
+def status():
+    return jsonify({'status': 'ok'})
+
 
 @app.route('/newloan')
 def new_student():
