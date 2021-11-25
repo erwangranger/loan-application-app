@@ -7,16 +7,18 @@
          <thead>
             <td>Name</td>
             <td>Loan Application ID</td>
-            <td>Password</td>
-            <td>ip</td>
+            <td>Loan Amount</td>
+            <td>Credit History</td>
+            <td>Approved?</td>
          </thead>
 
          {% for row in rows %}
             <tr>
                <td>{{row["name"]}}</td>
                <td>{{row["LoanID"]}}</td>
-               <td>{{row["password"]}}</td>
-               <td>{{row['ip']}}</td>
+               <td>{{row['LoanAmount']}}</td>
+               <td>{{row["CreditHistory"]}}</td>
+               <td>{{row["ApprovalAnswer"]}}</td>
             </tr>
          {% endfor %}
       </table>

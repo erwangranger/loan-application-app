@@ -5,7 +5,13 @@ counter = 0
 
 conn = sql.connect('./database.db')
 conn.execute('DROP TABLE IF EXISTS LoansTable')
-conn.execute('CREATE TABLE LoansTable (name TEXT, LoanID TEXT, password TEXT, ip TEXT)')
+conn.execute('CREATE TABLE LoansTable \
+               (name TEXT, \
+               LoanID TEXT, \
+               LoanAmount TEXT, \
+               CreditHistory TEXT, \
+               ApprovalAnswer TEXT)'\
+               )
 
 #Commit your changes in the database
 conn.commit()
@@ -29,35 +35,61 @@ def addloan():
    if request.method == 'POST':
       global counter
       counter += 1
-      ip_address = request.remote_addr
+      #ip_address = request.remote_addr
 
       try:
          nm = request.form['nm']
+         LoanAmount = request.form['LoanAmount']
+         CreditHistory = request.form['CreditHistory']
          # addr = request.form['add']
          # city = request.form['city']
          # pin = request.form['pin']
 
-         LoanID =  "LO00" + str(counter)
+         LoanID =  "LO-" + str(counter).zfill(4)
          print (LoanID)
-         password = "rhodsdemo"
+         # password = "rhodsdemo"
+         ApprovalAnswer = '0'
 
          with sql.connect("database.db") as con:
             cur = con.cursor()
 
             # cur.execute("INSERT INTO LoansTable (name,addr,city,pin) VALUES (?,?,?,?)",(nm,addr,city,pin) )
             # cur.execute("INSERT INTO LoansTable (name,ip,username) VALUES (?,?,?)",(nm,ip_address,username) )
-            cur.execute("INSERT INTO LoansTable (name,LoanID,password,ip) VALUES (?,?,?,?)" , (nm,LoanID,password,ip_address) )
+            cur.execute("INSERT INTO LoansTable \
+                           (name,\
+                           LoanID,\
+                           LoanAmount,\
+                           CreditHistory,\
+                           ApprovalAnswer) \
+                           VALUES (?,?,?,?,?)" \
+                           , \
+                           (nm,\
+                           LoanID,\
+                           LoanAmount,\
+                           CreditHistory,\
+                           ApprovalAnswer) \
+                           )
             # cur = con.cursor().execute('INSERT INTO LoansTable (name,addr,city,pin) VALUES (?,?,?,?)',(name,addr,city,pin) )
 
             con.commit()
             msg = "Record successfully added"
+
       except:
          con.rollback()
          msg = "error in insert operation"
 
       finally:
-         return render_template("result.html",msg = msg, LoanID = LoanID, nm = nm )
+         return render_template("result.html",\
+               msg = msg, \
+               LoanID = LoanID, \
+               nm = nm , \
+               LoanAmount = LoanAmount , \
+               CreditHistory = CreditHistory , \
+               ApprovalAnswer = ApprovalAnswer)
          con.close()
+
+
+
 
 @app.route('/listloans')
 def list():
