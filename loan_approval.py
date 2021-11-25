@@ -16,13 +16,6 @@ def loan_approval(nm, LoanAmount, CreditHistory):
             return 0
 
 
-
-# def greet_me(**kwargs):
-#     for key, value in kwargs.items():
-#         print("{0} = {1}".format(key, value))
-
-# greet_me(name="yasoob" , lname="granger")
-
 # test1 = loan_approval(nm = "jim" , \
 #                             LoanAmount = 10000, \
 #                             CreditHistory = 0)
@@ -35,4 +28,3 @@ def loan_approval(nm, LoanAmount, CreditHistory):
 # print (test1)
 # print (test2)
 # print (test3)
-
