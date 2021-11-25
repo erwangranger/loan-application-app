@@ -24,7 +24,7 @@ RUN rm -rf ./database.db
 
 RUN ls -al
 
-EXPOSE 5000
+EXPOSE 8080
 
 ENTRYPOINT [ "python" ]
 

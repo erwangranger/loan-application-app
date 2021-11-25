@@ -6,7 +6,8 @@ to run it locally:
 
 ```bash
 export FLASK_APP=app.py
-flask run
+flask run --host=0.0.0.0 --port=8080
+
 ```
 
 URL:
@@ -22,8 +23,8 @@ buildah bud -f Dockerfile -t loanapp:01 .
 run
 
 ```bash
-podman run --rm -it -p 0.0.0.0:5000:5000 loanapp:01
-#podman run --rm -d -p 5000:5000 loanapp:01
+podman run --rm -it -p 0.0.0.0:8080:8080 loanapp:01
+#podman run --rm -d -p 8080:8080 loanapp:01
 ```
 
 references / inspirations:
