@@ -4,8 +4,8 @@ import sqlite3 as sql
 counter = 0
 
 conn = sql.connect('./database.db')
-conn.execute('DROP TABLE IF EXISTS students')
-conn.execute('CREATE TABLE students (name TEXT, LoanID TEXT, password TEXT, ip TEXT)')
+conn.execute('DROP TABLE IF EXISTS LoansTable')
+conn.execute('CREATE TABLE LoansTable (name TEXT, LoanID TEXT, password TEXT, ip TEXT)')
 
 #Commit your changes in the database
 conn.commit()
@@ -44,10 +44,10 @@ def addloan():
          with sql.connect("database.db") as con:
             cur = con.cursor()
 
-            # cur.execute("INSERT INTO students (name,addr,city,pin) VALUES (?,?,?,?)",(nm,addr,city,pin) )
-            # cur.execute("INSERT INTO students (name,ip,username) VALUES (?,?,?)",(nm,ip_address,username) )
-            cur.execute("INSERT INTO students (name,LoanID,password,ip) VALUES (?,?,?,?)" , (nm,LoanID,password,ip_address) )
-            # cur = con.cursor().execute('INSERT INTO students (name,addr,city,pin) VALUES (?,?,?,?)',(name,addr,city,pin) )
+            # cur.execute("INSERT INTO LoansTable (name,addr,city,pin) VALUES (?,?,?,?)",(nm,addr,city,pin) )
+            # cur.execute("INSERT INTO LoansTable (name,ip,username) VALUES (?,?,?)",(nm,ip_address,username) )
+            cur.execute("INSERT INTO LoansTable (name,LoanID,password,ip) VALUES (?,?,?,?)" , (nm,LoanID,password,ip_address) )
+            # cur = con.cursor().execute('INSERT INTO LoansTable (name,addr,city,pin) VALUES (?,?,?,?)',(name,addr,city,pin) )
 
             con.commit()
             msg = "Record successfully added"
@@ -65,12 +65,14 @@ def list():
    con.row_factory = sql.Row
 
    cur = con.cursor()
-   cur.execute("select * from students")
+   cur.execute("select * from LoansTable")
 
    rows = cur.fetchall();
    return render_template("listloans.html",rows = rows)
 
 
 
+# if __name__ == '__main__':
+#    app.run(debug = True)
 if __name__ == '__main__':
-   app.run(debug = True)
+    app.run(host='0.0.0.0')
