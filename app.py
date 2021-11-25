@@ -2,6 +2,8 @@ from flask import Flask, render_template, request, jsonify
 import sqlite3 as sql
 import json
 
+from loan_approval import loan_approval
+
 counter = 0
 
 conn = sql.connect('./database.db')
@@ -54,7 +56,12 @@ def addloan():
          LoanID =  "LO-" + str(counter).zfill(4)
          print (LoanID)
          # password = "rhodsdemo"
-         ApprovalAnswer = '0'
+         #ApprovalAnswer = '0'
+         ApprovalAnswer = loan_approval(nm = nm , \
+                                       LoanAmount = LoanAmount, \
+                                       CreditHistory = CreditHistory)
+         print (ApprovalAnswer)
+
 
          with sql.connect("database.db") as con:
             cur = con.cursor()
@@ -107,6 +114,8 @@ def list():
 
    rows = cur.fetchall();
    return render_template("listloans.html",rows = rows)
+
+
 
 
 
