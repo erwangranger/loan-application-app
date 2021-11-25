@@ -18,11 +18,11 @@
 
    <body>
 
-      <p>... Your connection information has been successfully generated. See below:</p>
+      <p>... Your loan submission has been saved and appraised:</p>
       <!-- <h2><a href = "\">go back to home page</a></h2> -->
 
-      <h1> Environment Details </h1>
-      {% if assigned_user %}
+      <h1> Loan Details </h1>
+      {% if LoanID %}
           <font size="5" face="Courier New" >
           <table >
               <tr>
@@ -30,8 +30,8 @@
                 <th>{{nm}}</th>
               </tr>
               <tr>
-                <td>Assigned Username:   </td>
-                <td>{{assigned_user}}</td>
+                <td>Loan Request ID:   </td>
+                <td>{{LoanID}}</td>
               </tr>
               <tr>
                 <td>Assigned Password:   </td>
@@ -52,7 +52,7 @@
           </table>
          </font>
          </br>
-          <p>Save this information somewhere and do not reload this page.</p>
+          <p>Go back to the <a href="/">main page</a> or view the <a href="/listloans"> list </a> of submitted loans </p>
       {% endif %}
    </body>
 </html>

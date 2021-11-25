@@ -3,9 +3,9 @@ import sqlite3 as sql
 
 counter = 0
 
-conn = sql.connect('database.db')
+conn = sql.connect('./database.db')
 conn.execute('DROP TABLE IF EXISTS students')
-conn.execute('CREATE TABLE students (name TEXT, assigned_user TEXT, password TEXT, ip TEXT)')
+conn.execute('CREATE TABLE students (name TEXT, LoanID TEXT, password TEXT, ip TEXT)')
 
 #Commit your changes in the database
 conn.commit()
@@ -24,8 +24,8 @@ def home():
 def new_student():
    return render_template('newloan.html')
 
-@app.route('/addrec',methods = ['POST', 'GET'])
-def addrec():
+@app.route('/addloan',methods = ['POST', 'GET'])
+def addloan():
    if request.method == 'POST':
       global counter
       counter += 1
@@ -37,8 +37,8 @@ def addrec():
          # city = request.form['city']
          # pin = request.form['pin']
 
-         assigned_user =  "user" + str(counter)
-         print (assigned_user)
+         LoanID =  "LO00" + str(counter)
+         print (LoanID)
          password = "rhodsdemo"
 
          with sql.connect("database.db") as con:
@@ -46,7 +46,7 @@ def addrec():
 
             # cur.execute("INSERT INTO students (name,addr,city,pin) VALUES (?,?,?,?)",(nm,addr,city,pin) )
             # cur.execute("INSERT INTO students (name,ip,username) VALUES (?,?,?)",(nm,ip_address,username) )
-            cur.execute("INSERT INTO students (name,assigned_user,password,ip) VALUES (?,?,?,?)" , (nm,assigned_user,password,ip_address) )
+            cur.execute("INSERT INTO students (name,LoanID,password,ip) VALUES (?,?,?,?)" , (nm,LoanID,password,ip_address) )
             # cur = con.cursor().execute('INSERT INTO students (name,addr,city,pin) VALUES (?,?,?,?)',(name,addr,city,pin) )
 
             con.commit()
@@ -56,7 +56,7 @@ def addrec():
          msg = "error in insert operation"
 
       finally:
-         return render_template("result.html",msg = msg, assigned_user = assigned_user, nm = nm )
+         return render_template("result.html",msg = msg, LoanID = LoanID, nm = nm )
          con.close()
 
 @app.route('/listloans')
